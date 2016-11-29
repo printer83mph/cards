@@ -27,3 +27,6 @@ class Pile(object):
         self.cards = [] if replace else self.cards
         for i in range(0,52):
             self.cards.append(NumberedCard(False,i))
+
+    def getTopCard(self):
+        return self.cards[-1]
