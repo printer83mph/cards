@@ -1,3 +1,5 @@
+from random import shuffle
+
 class Card(object):
 
     def __init__(self,up = False):
@@ -30,3 +32,6 @@ class Pile(object):
 
     def getTopCard(self):
         return self.cards[-1]
+
+    def shuffle(self):
+        random.shuffle(self.cards)
