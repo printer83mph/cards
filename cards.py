@@ -22,3 +22,7 @@ class Pile(object):
         if(cards != None):
             cards = []
         self.cards = cards
+
+    def fill(self):
+        for i in range(0,52):
+            self.cards.append(NumberedCard(False,i))
