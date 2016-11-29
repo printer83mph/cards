@@ -5,11 +5,13 @@ class Card(object):
 
 class NumberedCard(Card):
 
-    def __init__(self,number = 0):
+    def __init__(self,number = 0,up = False):
         self.number = number
+        self.up = up
 
 class FrenchCard(NumberedCard):
 
-    def __init__(self,number = 0,suit = "spades"):
+    def __init__(self,number = 0,suit = "spades",up = False):
         self.number = number
         self.suit = suit
+        self.up = up
