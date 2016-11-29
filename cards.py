@@ -15,3 +15,10 @@ class FrenchCard(NumberedCard):
         self.number = number
         self.suit = suit
         self.up = up
+
+class Pile(object):
+
+    def __init__(self,cards = None):
+        if(cards != None):
+            cards = []
+        self.cards = cards
