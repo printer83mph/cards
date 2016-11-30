@@ -2,18 +2,18 @@ from random import shuffle
 
 class Card(object):
 
-    def __init__(self,up = False):
+    def __init__(self, up = False):
         self.up = up
 
 class NumberedCard(Card):
 
-    def __init__(self,up = False,number = 0):
+    def __init__(self, up = False, number = 0):
         self.number = number
         self.up = up
 
 class FrenchCard(NumberedCard):
 
-    def __init__(self,up = False,number = 0,suit = "spades"):
+    def __init__(self, up = False, number = 0, suit = "spades"):
         self.number = number
         self.suit = suit
         self.up = up
@@ -24,12 +24,12 @@ class FrenchCard(NumberedCard):
 
 class Pile(object):
 
-    def __init__(self,cards = None):
+    def __init__(self, cards = None):
         if(cards != None):
             cards = []
         self.cards = cards
 
-    def fill(self,replace = True):
+    def fill(self, replace = True):
         self.cards = [] if replace else self.cards
         for i in range(1,10):
             self.cards.append(NumberedCard(False,i))
@@ -42,7 +42,7 @@ class Pile(object):
 
 class FrenchPile(Pile):
 
-    def fill(self,replace = True):
+    def fill(self, replace = True):
         self.cards = [] if replace else self.cards
         suits = ["spades","hearts","clubs","diamonds"]
         for i in range(0,4):
