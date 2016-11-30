@@ -35,3 +35,12 @@ class Pile(object):
 
     def shuffle(self):
         random.shuffle(self.cards)
+
+class FrenchPile(Pile):
+
+    def fill(self,replace = True):
+        self.cards = [] if replace else self.cards
+        suits = ["spades","hearts","clubs","diamonds"]
+        for i in range(0,4):
+            for s in range(1,14):
+                self.cards.append(FrenchCard(False,i,suits[i]))
