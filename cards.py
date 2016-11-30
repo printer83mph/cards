@@ -31,7 +31,7 @@ class Pile(object):
 
     def fill(self,replace = True):
         self.cards = [] if replace else self.cards
-        for i in range(0,52):
+        for i in range(1,10):
             self.cards.append(NumberedCard(False,i))
 
     def getTopCard(self):
