@@ -18,6 +18,10 @@ class FrenchCard(NumberedCard):
         self.suit = suit
         self.up = up
 
+    def get_name(self):
+
+        return str(self.number) + " of " + self.suit
+
 class Pile(object):
 
     def __init__(self,cards = None):
@@ -43,4 +47,4 @@ class FrenchPile(Pile):
         suits = ["spades","hearts","clubs","diamonds"]
         for i in range(0,4):
             for s in range(1,14):
-                self.cards.append(FrenchCard(False,i,suits[i]))
+                self.cards.append(FrenchCard(False,s,suits[i]))
