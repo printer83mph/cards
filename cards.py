@@ -11,16 +11,19 @@ class NumberedCard(Card):
         self.number = number
         self.up = up
 
+    def get_name(self):
+    	return str(self.number)
+
 class FrenchCard(NumberedCard):
 
     def __init__(self, up = False, number = 0, suit = "spades"):
         self.number = number
         self.suit = suit
         self.up = up
+        self.specials = {1:"Ace",11:"Jack",12:"Queen",13:"King"}
 
     def get_name(self):
-
-        return str(self.number) + " of " + self.suit
+        return str(self.number if self.number not in self.specials else self.specials[self.number]) + " of " + self.suit
 
 class Pile(object):
 
@@ -34,17 +37,24 @@ class Pile(object):
         for i in range(1,10):
             self.cards.append(NumberedCard(False,i))
 
-    def getTopCard(self):
+    def get_top_card(self):
         return self.cards[-1]
 
     def shuffle(self):
-        random.shuffle(self.cards)
+        shuffle(self.cards)
 
-class FrenchPile(Pile):
-
-    def fill(self, replace = True):
+    def french_fill(self, replace = True):
         self.cards = [] if replace else self.cards
         suits = ["spades","hearts","clubs","diamonds"]
         for i in range(0,4):
             for s in range(1,14):
                 self.cards.append(FrenchCard(False,s,suits[i]))
+
+    def print_pile(self):
+   		for card in self.cards:
+   			print card.get_name()
+
+    def pull_card(self, index):
+    	card = self.cards[index]
+    	del self.cards[1]
+    	return card
