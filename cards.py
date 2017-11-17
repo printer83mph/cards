@@ -59,11 +59,14 @@ class Pile(object):
 
     def pull_card(self, index):
     	card = self.cards[index]
-    	del self.cards[1]
+    	self.cards.pop(index)
     	return card
 
     def pull_random_card(self):
         return self.pull_card(random.randint(0,len(self.cards)))
+
+    def pull_top_card(self):
+        return self.pull_card(len(self.cards)-1)
 
     def random_card(self):
         return random.choice(self.cards)
@@ -71,10 +74,17 @@ class Pile(object):
 def main():
     cards = Pile()
     cards.french_fill()
+    # cards.print_pile()
+    # x = cards.pull_random_card()
+    # cards.print_pile()
+    # print x.get_name()
+    cards.shuffle()
     cards.print_pile()
-    x = cards.pull_random_card()
+    print
+    y = cards.pull_top_card()
+    print y.get_name()
+    print
     cards.print_pile()
-    print x.get_name()
 
 if __name__ == "__main__":
     main()
