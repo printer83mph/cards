@@ -1,4 +1,4 @@
-from random import shuffle
+import random
 
 class Card(object):
 
@@ -41,7 +41,7 @@ class Pile(object):
         return self.cards[-1]
 
     def shuffle(self):
-        shuffle(self.cards)
+        random.shuffle(self.cards)
 
     def french_fill(self, replace = True):
         self.cards = [] if replace else self.cards
@@ -49,6 +49,9 @@ class Pile(object):
         for i in range(0,4):
             for s in range(1,14):
                 self.cards.append(FrenchCard(False,s,suits[i]))
+
+    def get_names(self):
+        return [card.get_name() for card in self.cards]
 
     def print_pile(self):
    		for card in self.cards:
@@ -58,3 +61,20 @@ class Pile(object):
     	card = self.cards[index]
     	del self.cards[1]
     	return card
+
+    def pull_random_card(self):
+        return self.pull_card(random.randint(0,len(self.cards)))
+
+    def random_card(self):
+        return random.choice(self.cards)
+
+def main():
+    cards = Pile()
+    cards.french_fill()
+    cards.print_pile()
+    x = cards.pull_random_card()
+    cards.print_pile()
+    print x.get_name()
+
+if __name__ == "__main__":
+    main()
